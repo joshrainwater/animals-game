@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <div class="v-screen h-screen p-16 flex items-center flex-col">
     <template v-if="type == 'just photos'">
-      <img class="w-16 h-16" :src="currentPhoto" alt="" @click="right()">
+      <div class="bg-white p-8 pb-16 rounded shadow-lg mb-8">
+        <img class="rounded-sm" :src="currentPhoto" alt="" @click="right()">
+      </div>
     </template>
     <template v-else>
-      <img class="w-16 h-16" :src="currentPhoto" alt="">
-      <div v-for="guess in guesses" :key="guess">
-        <button v-if="guess == randomSorted[index]" @click="right()">* {{ guess }}</button>
-        <button v-else @click="wrong()">{{ guess }}</button>
+      <div class="bg-white p-8 pb-16 rounded shadow-lg mb-8">
+        <img class="rounded-sm" :src="currentPhoto" alt="">
+      </div>
+      <div class="flex">
+        <template v-for="guess in guesses" :key="guess">
+          <button class="styled-button" v-if="guess == randomSorted[index]" @click="right()">{{ guess.toUpperCase() }}*</button>
+          <button class="styled-button" v-else @click="wrong()">{{ guess.toUpperCase() }}</button>
+        </template>
       </div>
     </template>
   </div>

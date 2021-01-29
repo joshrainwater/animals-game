@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="v-screen h-screen">
     <Menu v-if="!type" v-model:type="type"></Menu>
     <Game v-else :animals="animals" :type="type" @gameEnd="gameEnd()"></Game>
   </div>
@@ -28,14 +28,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

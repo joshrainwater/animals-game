@@ -1,4 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Roboto:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+
 /* ./src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-display {
+    font-family: 'Carter One', cursive;
+}
+#app {
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to top right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+}
+
+.styled-button {
+    @apply p-2 bg-green-500 hover:bg-green-300 text-white font-bold rounded-lg m-2 shadow-md cursor-pointer
+}
