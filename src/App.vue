@@ -1,51 +1,31 @@
 <template>
   <div>
-    <game :animals="animals" type="word"></game>
+    <Menu v-if="!type" v-model:type="type"></Menu>
+    <Game v-else :animals="animals" :type="type" @gameEnd="gameEnd()"></Game>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import animals from './animals.json';
 import Game from './components/Game.vue';
+import Menu from './components/Menu.vue';
 
 export default {
   name: 'App',
   components: {
-    Game
+    Game, Menu
   },
   data() {
     return {
-      animals: {
-        tiger: {
-          pictures: [{
-            url: 'https://nationalzoo.si.edu/sites/default/files/newsroom/20190226-bridgetisrael08.jpg',
-            copyright: 'Smithsonian National Zoo'
-          }, {
-            url: 'https://annamiticus.com/wp-content/uploads/2016/04/NGOs-call-for-ending-tiger-farming-and-trade.jpg',
-            copyright: 'Anna Miticus'
-          }]
-        },
-        lion: {
-          pictures: [{
-            url: 'https://gcs.thesouthafrican.com/2019/02/a7e3a67f-pexels-photo-730536.jpeg',
-            copyright: 'The South African'
-          }, {
-            url: 'https://www.cbc.ca/natureofthings/content/images/episodes/lionking.jpg',
-            copyright: 'CBC'
-          }]
-        },
-        bear: {
-          pictures: [{
-            url: 'http://www.pbs.org/wnet/nature/files/2018/07/Bear133.jpg',
-            copyright: 'PBS'
-          }, {
-            url: 'https://news.nationalgeographic.com/content/dam/news/2015/08/20/bearcourt/1bearcourt.ngsversion.1440099001838.adapt.1900.1.jpg',
-            copyright: 'National Geographic'
-          }]
-        }
-      }
+      animals: animals,
+      type: null
     }
   },
+  methods: {
+    gameEnd() {
+      this.type = null;
+    }
+  }
 }
 </script>
 

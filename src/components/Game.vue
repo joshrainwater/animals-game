@@ -1,10 +1,15 @@
 <template>
   <div>
-    <img class="w-16 h-16" :src="currentPhoto" alt="">
-    <div v-for="guess in guesses" :key="guess">
-      <button v-if="guess == randomSorted[index]" @click="right()">* {{ guess }}</button>
-      <button v-else @click="wrong()">{{ guess }}</button>
-    </div>
+    <template v-if="type == 'just photos'">
+      <img class="w-16 h-16" :src="currentPhoto" alt="" @click="right()">
+    </template>
+    <template v-else>
+      <img class="w-16 h-16" :src="currentPhoto" alt="">
+      <div v-for="guess in guesses" :key="guess">
+        <button v-if="guess == randomSorted[index]" @click="right()">* {{ guess }}</button>
+        <button v-else @click="wrong()">{{ guess }}</button>
+      </div>
+    </template>
   </div>
 </template>
 <script>
@@ -53,7 +58,7 @@ export default {
   methods: {
     right() {
       if(this.index == Object.keys(this.animals).length-1) {
-        this.index = 0;
+        this.$emit('gameEnd');
       } else {
         this.index++;
       }
